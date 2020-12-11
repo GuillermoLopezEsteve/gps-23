@@ -1,0 +1,16 @@
+stages:
+  - build
+  - test
+
+build-code-job:
+  stage: build
+  script:
+    - echo "Check the ruby version, then build some Ruby project files:"
+    - ruby -v
+    - rake
+
+test-code-job:
+  stage: test
+  script:
+    - echo "Ejecutamos los tests"
+    - python test.py
