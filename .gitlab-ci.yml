@@ -3,6 +3,8 @@ stages:
   - pipeline
   - test
 
+image: python:3.8.6
+
 install-dependencies:
     stage: dependencies
     script: python -m pip install --upgrade pip setuptools whee
@@ -17,6 +19,3 @@ test-code-job:
 analize-pslint:
     stage: pipeline
     script: pylint test.py
-    
-default:
-  image: python:3.8.6-alpine3.12
