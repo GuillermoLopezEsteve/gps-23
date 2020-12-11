@@ -1,5 +1,6 @@
 stages:
   - build
+  - dependencies
   - test
 
 build-code-job:
@@ -8,6 +9,17 @@ build-code-job:
     - echo "Check the ruby version, then build some Ruby project files:"
     - ruby -v
     - rake
+
+install-dependencies:
+    stage: dependencies
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: python -m pip install --upgrade pip setuptools whee
 
 test-code-job:
   stage: test
