@@ -5,14 +5,8 @@ stages:
 
 install-dependencies:
     stage: dependencies
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8.6'
-    - name: Install dependencies
-      run: python -m pip install --upgrade pip setuptools whee
+    script: python -m pip install --upgrade pip setuptools whee
+            pip install pylint --upgrade
 
 test-code-job:
   stage: test
@@ -22,8 +16,7 @@ test-code-job:
 
 analize-pslint:
     stage: pipeline
-    script: pip install pylint --upgrade
-            pylint test.py
+    script: pylint test.py
     
 default:
   image: python:3.8.6-alpine3.12
