@@ -1,12 +1,12 @@
 stages:
-  - dependencies
+  - dependencie
   - pipeline
   - test
 
 image: python:3.8.6
 
 install-dependencies:
-    stage: dependencies
+    stage: dependencie
     script: python -m pip install --upgrade pip setuptools whee
             pip install pylint --upgrade
 
